@@ -23,10 +23,13 @@ form.addEventListener('input', event => {
 
 form.addEventListener('submit', event => {
   event.preventDefault();
-  if (!formData.email || !formData.message) {
+  const email = formData.email.trim();
+  const message = formData.message.trim();
+
+  if (!email || !message) {
     alert('Fill please all fields');
   } else {
-    console.log('Submitted data:', formData);
+    console.log('Submitted data:', { email, message });
     localStorage.removeItem('feedback-form-state');
     formData.email = '';
     formData.message = '';
